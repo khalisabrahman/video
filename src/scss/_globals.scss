@@ -1,0 +1,118 @@
+html {
+    font-size: 100%; // For accessibility, let's user control the zoom level in browser
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFFFFF;
+    line-height: 1.3125rem;
+    font-weight: 600;
+    overflow-x: hidden;
+}
+
+
+// Text 
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    line-height: 1.15;
+    margin-top: 0px;
+}
+
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
+
+// Spacing
+.container {
+    max-width: 90rem;
+    margin: 0 auto;
+
+    &--pall {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem; 
+    }
+
+    &--px {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem; 
+    }
+
+    &--py {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    &--pt {
+        padding-top: 2.5rem;
+    }
+
+    &--pr {
+        padding-right: 1.25rem;
+    }
+
+    &--pb {
+        padding-bottom: 2.5rem;
+    }
+
+    &--pl {
+        padding-left: 1.25rem;
+    }
+}
+
+// Flexbox helper classes
+.flex {
+    display: flex;
+
+    &-fd-cl {
+        flex-direction: column;
+    }
+
+    &-jc-sb {
+        justify-content: space-between;
+    }
+
+    &-jc-c {
+        justify-content: center;
+    }
+
+    &-ai-c {
+        align-items: center;
+    }
+
+}
+
+// Buttons
+
+
+//Visibility
+.hide-for-mobile {
+
+    // hide for tablet and mobile
+    @include breakpoint-down(medium) {
+        display: none;
+    }
+}
+
+.hide-for-desktop {
+
+    // hide for desktop viewport widths
+    @include breakpoint-up(large) {
+        display: none;
+    }
+}
