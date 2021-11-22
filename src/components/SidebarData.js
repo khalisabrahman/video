@@ -5,7 +5,6 @@ export const SidebarData = [
 		icon: (
 			<svg
                 id='video-icon'
-                
 				width='28'
 				height='28'
 				viewBox='0 0 28 28'

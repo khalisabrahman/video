@@ -7,6 +7,7 @@ function Sidebar() {
 		<div className='sidebar flex flex-fd-cl'>
 			<div className='sidebar__icons'>
 				<svg
+                    id='app-logo'
 					width='35'
 					height='34'
 					viewBox='0 0 35 34'
@@ -31,8 +32,7 @@ function Sidebar() {
 					/>
 					<circle cx='23.0964' cy='11' r='11' fill='#EE6363' />
 				</svg>
-			</div>
-			{isLoggedIn &&
+                {isLoggedIn &&
 				SidebarData.map((icon) => {
 					return (
 						<div>
@@ -40,6 +40,8 @@ function Sidebar() {
                         </div>
 					);
 				})}
+			</div>
+			
 		</div>
 	);
 }
