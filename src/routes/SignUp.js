@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import validate from '../components/validateInfo';
 import useForm from '../components/useForm';
 
-export default function SignUp({ submitForm }) {
+export default function SignUp() {
+	const [isSubmitted, setIsSubmitted] = useState(false);
+
+	function submitForm() {
+		setIsSubmitted(true);
+	}
+	
 	const { handleChange, handleSubmit, values, errors } = useForm(
 		submitForm,
 		validate
@@ -66,10 +72,8 @@ export default function SignUp({ submitForm }) {
 					<button className='loginBtn'>Signup</button>
 					<div className='formSignUp'>
 						<span className='newHere'>Already user?</span>{' '}
-						<a href='./Login' className='newHereLink'>
-							Login
-						</a>
-						{/* <Link className='newHereLink'to='/signup'>Signup</Link> */}
+						
+						<Link className='newHereLink'to='/'>Login</Link>
 					</div>
 				</form>
 			</div>

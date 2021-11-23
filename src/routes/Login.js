@@ -1,14 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
 export default function Login() {
+	const history = useHistory();
+
+	function handleSubmit() {
+		history.push("/video");
+	}
 	return (
 		<div className='flex container--pt container--pb'>
             <Sidebar />
 			<h1 className='title'>Sign In</h1>
 			<div className='signInContainer'>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<label className='formLabel' htmlFor='email'>
 						Email Address
 					</label>
@@ -17,6 +23,7 @@ export default function Login() {
 						className='formInput formInput--blueBorder'
 						name='email'
 						placeholder='Enter your email'
+						required
 					/>
 					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='password'>
@@ -35,10 +42,7 @@ export default function Login() {
 					<button className='loginBtn'>Login</button>
 					<div className='formSignUp'>
 						<span className='newHere'>New Here?</span>{' '}
-						<a href='#' className='newHereLink'>
-							Signup
-						</a>
-                        {/* <Link className='newHereLink'to='/signup'>Signup</Link> */}
+                        <Link className='newHereLink' to='/signup'>Signup</Link>
 					</div>
 				</form>
 			</div>
