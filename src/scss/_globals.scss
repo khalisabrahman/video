@@ -21,12 +21,17 @@ body {
 
 
 // Text 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 p,
 h1,
 h2,
-h3 {
-    font-weight: 600;
-    line-height: 1.15;
+h3,
+button,
+input,
+textarea {
+    font-family: 'Poppins';
     margin: 0;
 }
 

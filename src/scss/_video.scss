@@ -130,6 +130,7 @@
     padding: 20px;
     border-radius: 20px;
     margin-left: 26px;
+    margin-right: 40px;
     max-width: 740px;
     height: 640px;
 
@@ -161,5 +162,110 @@
         line-height: 21px;
         color: #999999;
         cursor: pointer;
+    }
+}
+
+.rightContainer {
+
+
+    .selections {
+        margin-bottom: 29px;
+    }
+
+    .selections button {
+        border-style: none;
+        background: #FFFFFF;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+        color: #999999;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+    }
+
+    .selections button:hover,
+    .selections button:focus {
+        color: hsla(219, 51%, 45%, 1);
+    }
+
+    .actors {
+        gap: 11px;
+        flex-wrap: wrap;
+    }
+
+    .actor-container:hover,
+    .actor-container:focus {
+        .actor-img {
+            // TODO
+        }
+
+        .actor {
+            color: #3860AD;
+        }
+    }
+
+    .actor-img {
+        border: none;
+        cursor: pointer;
+    }
+
+
+    .actor {
+        display: block;
+        background-color: #FFFFFF;
+        margin: 0 auto;
+        font-weight: 500;
+        font-size: 12px;
+        color: #666666;
+        line-height: 18px;
+        cursor: pointer;
+        border-style: none;
+    }
+
+    .voices {
+        gap: 20px;
+    }
+
+
+
+    .alignmentBtns {
+        gap: 22px;
+    }
+
+    .alignmentBtn {
+        padding: 13px 50px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+        border-style: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: #3860AD;
+            ;
+            background-color: #EBF2FF;
+        }
+    }
+
+    .backgroundsContainer {
+        width: 501px;
+        padding: 16px;
+        background-color: #EBF2FF;
+        border-radius: 6px;
+
+        .images-bar {
+            margin-bottom: 15px;
+        }
+
+        .images-title {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+            color: #3860AD;
+        }
     }
 }

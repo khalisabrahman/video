@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import Image from '../images/Rectangle 1.png'
+import Image from '../images/Rectangle 1.png';
+import Anna from '../images/anna.jpg';
+import Yoyo from '../images/yoyo.jpg';
+import Skye from '../images/skye.png';
+import Mike from '../images/mike.png';
+import Vincent from '../images/vincent.jpg';
+import Peter from '../images/peter.jpg';
+import May from '../images/may.jpg';
+import Asian from '../images/asian.png';
+import British from '../images/british.png';
+import American from '../images/american.png';
+import Backgrounds from '../images/backgrounds.png';
+import Vectordown from '../components/Vectordown';
+import Vectorup from '../components/Vectorup';
+import { BackgroundData } from '../components/BackgroundData';
 
 function Video() {
 	const [title, setTitle] = useState('Saying Hi to my customers');
-	const [titleModal, setTitleModal] = useState('false');
-    const [videoscript, setVideoscript] = useState('Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages')
+	const [titleModal, setTitleModal] = useState(false);
+	const [videoscript, setVideoscript] = useState(
+		'Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages'
+	);
+	const [active, setActive] = useState('actor');
+	const [clicked, setClicked] = useState(false);
 
 	function titleChange(event) {
 		setTitle(event.target.value);
@@ -15,9 +33,17 @@ function Video() {
 		setTitleModal(!titleModal);
 	}
 
-    function changeVideoscript(event) {
-        setVideoscript(event.target.value);
-    }
+	function changeVideoscript(event) {
+		setVideoscript(event.target.value);
+	}
+
+	function toggle(index) {
+		if (clicked === index) {
+			// if clicked question is already active, then close it
+			return setClicked(null);
+		}
+		setClicked(index);
+	}
 
 	return (
 		<div className='flex container--pt container--pb'>
@@ -49,18 +75,123 @@ function Video() {
 						<button className='videoSaveBtn'>Save</button>
 					</div>
 				</div>
-                <div className="line"></div>
+				<div className='line'></div>
 
-                <div className="flex">
-                    <div className='leftContainer'>
-                        <img src={Image} alt="" />
-                        <textarea value={videoscript} className='videoscript' onChange={changeVideoscript} />
-                        <button className='listenBtn'>Listen</button>
-                    </div>
-                    <div className='rightContainer'>
-
-                    </div>
-                </div>
+				<div className='flex'>
+					<div className='leftContainer'>
+						<img src={Image} alt='' />
+						<textarea
+							value={videoscript}
+							className='videoscript'
+							onChange={changeVideoscript}
+						/>
+						<button className='listenBtn'>Listen</button>
+					</div>
+					<div className='rightContainer'>
+						<div class='flex selections'>
+							<button
+								onClick={() => {
+									setActive('actor');
+								}}
+							>
+								Actor
+							</button>
+							<button
+								onClick={() => {
+									setActive('voice');
+								}}
+							>
+								Voice
+							</button>
+							<button
+								onClick={() => {
+									setActive('alignment');
+								}}
+							>
+								Alignment
+							</button>
+							<button
+								onClick={() => {
+									setActive('background');
+								}}
+							>
+								Background
+							</button>
+						</div>
+						{active === 'actor' && (
+							<div className='flex actors'>
+								<div className='actor-container'>
+									<img className='actor-img' src={Anna} alt='' />
+									<button className='actor'>Anna</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={Yoyo} alt='' />
+									<button className='actor'>YoYo</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={Skye} alt='' />
+									<button className='actor'>Skye</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={Mike} alt='' />
+									<button className='actor'>Mike</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={Vincent} alt='' />
+									<button className='actor'>Vincent</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={Peter} alt='' />
+									<button className='actor'>Peter</button>
+								</div>
+								<div className='actor-container'>
+									<img className='actor-img' src={May} alt='' />
+									<button className='actor'>May</button>
+								</div>
+							</div>
+						)}
+						{active === 'voice' && (
+							<div className='flex flex-fd-cl voices'>
+								<div className='voice'>
+									<img src={Asian} alt='' />
+								</div>
+								<div className='voice'>
+									<img src={British} alt='' />
+								</div>
+								<div className='voice'>
+									<img src={American} alt='' />
+								</div>
+							</div>
+						)}
+						{active === 'alignment' && (
+							<div className='flex alignmentBtns'>
+								<button class='alignmentBtn'>Left</button>
+								<button class='alignmentBtn'>Center</button>
+								<button class='alignmentBtn'>Right</button>
+							</div>
+						)}
+						{active === 'background' && (
+							<div className='flex flex-fd-cl backgroundsContainer'>
+								{BackgroundData.map((choice, index) => {
+									return (
+										<>
+											<div
+												className='flex flex-jc-sb images-bar'
+												onClick={() => toggle(index)}
+											>
+												<p className='images-title'>{choice.choice}</p>
+												<span>{clicked === index ? <Vectorup /> : <Vectordown />}</span>
+											</div>
+                                            { clicked === index ? (
+                                                <img src={Backgrounds} alt="" />
+                                            ) : <div></div>}
+										</>
+									);
+								})}
+							</div>
+						)}
+					</div>
+				</div>
 
 				{titleModal && (
 					<div className='titleModal'>
@@ -83,9 +214,7 @@ function Video() {
 						</button>
 					</div>
 				)}
-                
 			</div>
-
 		</div>
 	);
 }

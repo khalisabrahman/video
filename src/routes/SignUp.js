@@ -1,52 +1,72 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import validate from '../components/validateInfo';
+import useForm from '../components/useForm';
 
-export default function SignUp() {
+export default function SignUp({ submitForm }) {
+	const { handleChange, handleSubmit, values, errors } = useForm(
+		submitForm,
+		validate
+	);
+
 	return (
 		<div className='flex container--pt container--pb'>
 			<Sidebar />
 			<h1 className='title'>Create an account</h1>
 			<div className='signInContainer'>
-				<form>
-					<label className='formLabel' htmlFor='fullname'>
-						Full name
-					</label>
+				<form onSubmit={handleSubmit}>
+					<div className='flex flex-jc-sb'>
+						<label className='formLabel' htmlFor='username'>
+							Full name
+						</label>
+						{errors.username && <span className='fail'>{errors.username}</span>}
+					</div>
 					<input
 						type='text'
 						className='formInput formInput--blueBorder'
-						name='fullname'
+						name='username'
 						placeholder='Enter your full name'
+						value={values.username}
+						onChange={handleChange}
 					/>
+					<div className='flex flex-jc-sb'>
+						<label className='formLabel' htmlFor='email'>
+							Email address
+						</label>
+						{errors.email && <span className='fail'>{errors.email}</span>}
+					</div>
 
-					<label className='formLabel' htmlFor='email'>
-						Email address
-					</label>
 					<input
 						type='text'
 						className='formInput formInput--blueBorder'
 						name='email'
 						placeholder='Enter your email'
+						value={values.email}
+						onChange={handleChange}
 					/>
-                    <div className='flex flex-jc-sb'>
+					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='password'>
 							New Password
 						</label>
-                        
-						<a href='#' className='strong'> { /* To do */}
-							Strong
-						</a>
+						{values.password.length > 6 ? (
+							<span className='strong'>Strong</span>
+						) : (
+							<span></span>
+						)}
 					</div>
-                    <input
+					<input
 						type='password'
 						className='formInput'
 						name='password'
 						placeholder='Enter your password'
+						value={values.password}
+						onChange={handleChange}
 					/>
 					<button className='loginBtn'>Signup</button>
 					<div className='formSignUp'>
 						<span className='newHere'>Already user?</span>{' '}
-						<a href='#' className='newHereLink'>
+						<a href='./Login' className='newHereLink'>
 							Login
 						</a>
 						{/* <Link className='newHereLink'to='/signup'>Signup</Link> */}

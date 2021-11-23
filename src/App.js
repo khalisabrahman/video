@@ -11,7 +11,7 @@ function App() {
     //   <Route exact path='/' component={<Layout/>} />
     //   <Route exact path='/signup' component={<SignUp/>} />
     // </Routes>
-    <Video />
+    <SignUp />
   );
 }
 
