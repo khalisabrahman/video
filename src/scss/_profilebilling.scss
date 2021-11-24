@@ -1,0 +1,37 @@
+.billingContainer {
+    margin-left: 31px;
+    margin-bottom: 32px;
+}
+
+.billingContainer button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    border-style: none;
+    background-color: #FFFFFF;
+    color: #222222;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.referenceId {
+    text-align: left;
+    flex-basis: 308px;
+}
+
+.date {
+    text-align: left;
+    flex-basis: 157px;
+}
+
+.amount {
+    text-align: left;
+    flex-basis: 146px;
+}
+
+.recordsText {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: #222222;
+}

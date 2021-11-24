@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import { VideoContext } from '../context/VideoState';
 
 export default function Login() {
+	const { setLoginState } = useContext(VideoContext);
 	const history = useHistory();
 
 	function handleSubmit() {
+		setLoginState();
 		history.push("/video");
 	}
+
 	return (
 		<div className='flex container--pt container--pb'>
             <Sidebar />
@@ -38,6 +42,7 @@ export default function Login() {
 						className='formInput'
 						name='password'
 						placeholder='Enter your password'
+						required
 					/>
 					<button className='loginBtn'>Login</button>
 					<div className='formSignUp'>

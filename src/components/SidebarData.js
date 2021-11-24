@@ -19,6 +19,7 @@ export const SidebarData = [
 				/>
 			</svg>
 		),
+		link: 'video'
 	},
 	{
 		icon: (
@@ -44,6 +45,7 @@ export const SidebarData = [
 				/>
 			</svg>
 		),
+		link: 'play'
 	},
 	
 ];

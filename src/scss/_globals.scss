@@ -23,6 +23,7 @@ body {
 // Text 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 p,
 h1,
@@ -30,7 +31,9 @@ h2,
 h3,
 button,
 input,
-textarea {
+textarea,
+ul,
+li {
     font-family: 'Poppins';
     margin: 0;
 }

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .title {
   display: inline-block;
   font-weight: 500;
@@ -37,7 +38,9 @@ h2,
 h3,
 button,
 input,
-textarea {
+textarea,
+ul,
+li {
   font-family: 'Poppins';
   margin: 0;
 }
@@ -128,6 +131,12 @@ a:hover {
   padding-left: 32px;
   padding-top: 12px;
   padding-right: 32px;
+}
+
+.sidebar__icon {
+  width: 60px;
+  height: 60px;
+  background-color: #EBF2FF;
 }
 
 .signInContainer {
@@ -473,5 +482,234 @@ a:hover {
   font-size: 14px;
   line-height: 21px;
   color: #3860AD;
+}
+
+.saved__videos__container {
+  position: relative;
+  margin-left: 42px;
+}
+
+.saved__video {
+  width: 286px;
+  height: 238px;
+  background: #F4F4F4;
+  border-radius: 6px;
+}
+
+.saved__video__dots {
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  right: 13px;
+  cursor: pointer;
+}
+
+.saved__video__img {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+}
+
+.saved__video h3 {
+  position: relative;
+  margin-top: 11px;
+  margin-bottom: 13px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  line-height: 19px;
+  color: #222222;
+}
+
+.saved__video__btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.saved__video__btns button {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  background-color: #F4F4F4;
+  color: #999999;
+  padding: 1px 10px;
+  cursor: pointer;
+  border: 1px solid #999999;
+  border-radius: 6px;
+}
+
+.logoutBtn {
+  margin-right: 40px;
+  padding: 6px 20px 6px 20px;
+  background: #FFFFFF;
+  border-style: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #EE6363;
+  cursor: pointer;
+}
+
+.account--nav {
+  gap: 30px;
+  list-style: none;
+  margin-bottom: 45px;
+}
+
+.account--nav li {
+  font-weight: 500;
+  font-size: 15px;
+  color: #999999;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.account--nav li:hover {
+  color: #3860AD;
+}
+
+.profilepic {
+  margin-left: 39px;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 43px;
+  gap: 20px;
+}
+
+.formContainer {
+  max-width: 900px;
+  margin-left: 39px;
+  flex-wrap: wrap;
+}
+
+.formContainer__child {
+  margin-right: 40px;
+}
+
+.save {
+  margin-top: 25px;
+  margin-left: 39px;
+}
+
+.billingContainer {
+  margin-left: 31px;
+  margin-bottom: 32px;
+}
+
+.billingContainer button {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  border-style: none;
+  background-color: #FFFFFF;
+  color: #222222;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.referenceId {
+  text-align: left;
+  flex-basis: 308px;
+}
+
+.date {
+  text-align: left;
+  flex-basis: 157px;
+}
+
+.amount {
+  text-align: left;
+  flex-basis: 146px;
+}
+
+.recordsText {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #222222;
+}
+
+.plans {
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-left: 15px;
+}
+
+.plan {
+  max-width: 240px;
+  height: 417px;
+}
+
+.plan__title {
+  margin-left: 25px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.plan ul {
+  list-style: none;
+}
+
+.plan li {
+  margin-left: -15px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+}
+
+.plan li span {
+  margin-right: 15px;
+}
+
+.plan__price__container {
+  margin-top: 25px;
+}
+
+.plan__price {
+  display: inline;
+  margin-left: 25px;
+  font-size: 17px;
+  line-height: 25px;
+  color: #181059;
+  opacity: 0.96;
+}
+
+.plan__price2 {
+  display: inline;
+  font-size: 30px;
+  color: #181059;
+  opacity: 0.96;
+}
+
+.plan button {
+  display: block;
+  margin: 0 auto;
+  width: 212px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3860AD;
+  border-style: none;
+  background-color: #EBF2FF;
+  border-radius: 6px;
+}
+
+.current {
+  background-color: #46B13D;
+  color: #FFFFFF;
 }
 /*# sourceMappingURL=style.css.map */

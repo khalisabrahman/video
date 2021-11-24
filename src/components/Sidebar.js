@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { SidebarData } from './SidebarData';
+import { VideoContext } from '../context/VideoState';
+import { Link } from 'react-router-dom';
+import AccountPic from '../images/accountPic.png';
 
 function Sidebar() {
-	const [isLoggedIn, setisLoggedIn] = useState(true);
+	const { loggedIn } = useContext(VideoContext);
 	return (
 		<div className='sidebar flex flex-fd-cl'>
 			<div className='sidebar__icons'>
 				<svg
-                    id='app-logo'
+					id='app-logo'
 					width='35'
 					height='34'
 					viewBox='0 0 35 34'
@@ -32,16 +35,16 @@ function Sidebar() {
 					/>
 					<circle cx='23.0964' cy='11' r='11' fill='#EE6363' />
 				</svg>
-                {isLoggedIn &&
-				SidebarData.map((icon) => {
-					return (
-						<div>
-                            {icon.icon}
-                        </div>
-					);
-				})}
+				{loggedIn &&
+					SidebarData.map((icon) => {
+						return (
+							<Link to={`/${icon.link}`}>
+								<div className='sidebar__icon'>{icon.icon}</div>
+							</Link>
+						);
+					})}
+				{loggedIn && <img src={AccountPic} alt="" />}
 			</div>
-			
 		</div>
 	);
 }

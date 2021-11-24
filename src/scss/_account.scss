@@ -1,0 +1,57 @@
+.logoutBtn {
+    margin-right: 40px;
+    padding: 6px 20px 6px 20px;
+    background: #FFFFFF;
+    border-style: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    color: #EE6363;
+    ;
+    cursor: pointer;
+}
+
+.account--nav {
+    gap: 30px;
+    list-style: none;
+    margin-bottom: 45px;
+}
+
+.account--nav li {
+    font-weight: 500;
+    font-size: 15px;
+    color: #999999;
+    line-height: 22px;
+    cursor: pointer;
+
+    &:hover {
+        color: #3860AD;
+    }
+}
+
+.profilepic {
+    margin-left: 39px;
+}
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 43px;
+    gap: 20px;
+}
+
+.formContainer {
+    max-width: 900px; 
+    margin-left: 39px;
+    flex-wrap: wrap;
+}
+
+.formContainer__child {
+    margin-right: 40px;
+}
+
+.save {
+    margin-top: 25px;
+    margin-left: 39px;
+}
