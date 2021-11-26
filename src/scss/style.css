@@ -1,5 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.sidebar {
+  height: 100vh;
+  width: 102px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__icons {
+  height: 100vh;
+  padding-left: 35px;
+  padding-top: 12px;
+  padding-right: 33px;
+  gap: 30px;
+}
+
+.sidebar__icon path:hover {
+  fill: #3860AD;
+}
+
+.accountIcon {
+  margin-top: auto;
+  margin-bottom: 50px;
+}
+
 .title {
   display: inline-block;
   font-weight: 500;
@@ -121,24 +144,6 @@ a:hover {
   }
 }
 
-.sidebar {
-  height: 100vh;
-  width: 102px;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebar__icons {
-  padding-left: 32px;
-  padding-top: 12px;
-  padding-right: 32px;
-}
-
-.sidebar__icon {
-  width: 60px;
-  height: 60px;
-  background-color: #EBF2FF;
-}
-
 .signInContainer {
   position: absolute;
   top: 50%;
@@ -236,6 +241,7 @@ a:hover {
 
 .video-topbar {
   flex: 1;
+  position: relative;
 }
 
 .videoCancelBtn {
@@ -302,8 +308,8 @@ a:hover {
 
 .titleModal {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: -102px;
+  top: -41px;
   right: 0;
   bottom: 0;
   background-color: #FFFFFF;
@@ -646,6 +652,7 @@ a:hover {
 .plan {
   max-width: 240px;
   height: 417px;
+  border-radius: 10px;
 }
 
 .plan__title {
@@ -676,6 +683,7 @@ a:hover {
 
 .plan__price__container {
   margin-top: 25px;
+  margin-bottom: 11px;
 }
 
 .plan__price {
@@ -709,7 +717,63 @@ a:hover {
 }
 
 .current {
+  border-radius: 10px;
   background-color: #46B13D;
   color: #FFFFFF;
+}
+
+.currentContainer {
+  margin-top: -32px;
+}
+
+#currentli {
+  color: #FFFFFF;
+}
+
+#currentBtn {
+  background-color: #46B13D;
+  font-size: 20px;
+  line-height: 30px;
+  color: #1C7714;
+}
+
+.page {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.page-enter {
+  opacity: 0;
+}
+
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 2000ms;
+}
+
+.my-node {
+  opacity: 0;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.my-node-exit {
+  opacity: 1;
+}
+
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }
 /*# sourceMappingURL=style.css.map */

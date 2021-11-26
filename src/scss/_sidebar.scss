@@ -5,14 +5,22 @@
     border-right: 1px solid hsla(0, 0%, 0%, 0.1);
 
     &__icons {
-        padding-left: 32px;
+        height: 100vh;
+        padding-left: 35px;
         padding-top: 12px;
-        padding-right: 32px;
+        padding-right: 33px;
+        gap: 30px;
     }
 
-    &__icon {
-        width: 60px;
-        height: 60px;
-        background-color: #EBF2FF;
+    &__icon path {
+        
+        &:hover {
+            fill: #3860AD;
+        }
     }
+}
+
+.accountIcon {
+    margin-top: auto;
+    margin-bottom: 50px;
 }

@@ -10,6 +10,7 @@ export const SidebarData = [
 				viewBox='0 0 28 28'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				className='sidebar__icon'
 			>
 				<path
 					fill-rule='evenodd'
@@ -29,6 +30,7 @@ export const SidebarData = [
 				viewBox='0 0 44 44'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				className='sidebar__icon'
 			>
 				<path
 					d='M29.04 8.44801C29.04 7.74401 28.336 7.04001 27.632 7.04001H16.368C15.664 7.04001 14.96 7.74401 14.96 8.44801V8.80001H29.04V8.44801Z'
@@ -46,6 +48,7 @@ export const SidebarData = [
 			</svg>
 		),
 		link: 'play'
+	
 	},
 	
 ];

@@ -20,11 +20,18 @@ export const VideoProvider = (props) => {
 		})
 	}
 
+	const setLogoutState =() => {
+		dispatch({
+			type: 'set-logout-state'
+		})
+	}
+
 	return (
 		<VideoContext.Provider
 			value={{
 				loggedIn: state.loggedIn,
-                setLoginState
+                setLoginState,
+				setLogoutState
 			}}
 		>
 			{props.children}

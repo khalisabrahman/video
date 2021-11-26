@@ -1,5 +1,6 @@
 .video-topbar {
     flex: 1;
+    position: relative;
 }
 
 .videoCancelBtn {
@@ -69,8 +70,8 @@
 
 .titleModal {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -102px;
+    top: -41px;
     right: 0;
     bottom: 0;
     background-color: #FFFFFF;

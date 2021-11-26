@@ -1,63 +1,24 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { VideoContext } from '../context/VideoState';
 
 export default function Login() {
-	const { setLoginState } = useContext(VideoContext);
-	const history = useHistory();
+	const {setLoginState } = useContext(VideoContext);
 
 	function handleSubmit() {
 		setLoginState();
-		history.push("/video");
 	}
 
 	return (
 		<div className='flex container--pt container--pb'>
-            <Sidebar />
-			<h1 className='title'>Sign In</h1>
-			<div className='signInContainer'>
-				<form onSubmit={handleSubmit}>
-					<label className='formLabel' htmlFor='email'>
-						Email Address
-					</label>
-					<input
-						type='email'
-						className='formInput formInput--blueBorder'
-						name='email'
-						placeholder='Enter your email'
-						required
-					/>
-					<div className='flex flex-jc-sb'>
-						<label className='formLabel' htmlFor='password'>
-							Password
-						</label>
-						<a href='#' className='forgot'>
-							Forgot?
-						</a>
-					</div>
-					<input
-						type='password'
-						className='formInput'
-						name='password'
-						placeholder='Enter your password'
-						required
-					/>
-					<button className='loginBtn'>Login</button>
-					<div className='formSignUp'>
-						<span className='newHere'>New Here?</span>{' '}
-                        <Link className='newHereLink' to='/signup'>Signup</Link>
-					</div>
-				</form>
-			</div>
 			<svg
 				width='534'
 				height='509'
 				viewBox='0 0 534 509'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
-                className='shapeDesign'
+				className='shapeDesign'
 			>
 				<g opacity='0.1'>
 					<ellipse
@@ -79,6 +40,47 @@ export default function Login() {
 					<circle cx='405.011' cy='117.891' r='192.891' fill='#EE6363' />
 				</g>
 			</svg>
+			<Sidebar />
+			<h1 className='title'>Sign In</h1>
+			<div className='signInContainer'>
+				<form >
+					<label className='formLabel' htmlFor='email'>
+						Email Address
+					</label>
+					<input
+						type='email'
+						className='formInput formInput--blueBorder'
+						name='email'
+						placeholder='Enter your email'
+						required
+					/>
+					<div className='flex flex-jc-sb'>
+						<label className='formLabel' htmlFor='password'>
+							Password
+						</label>
+						<a href='/' className='forgot'>
+							Forgot?
+						</a>
+					</div>
+					<input
+						type='password'
+						className='formInput'
+						name='password'
+						placeholder='Enter your password'
+						required
+					/>
+					<Link to='/video'> 
+						<button className='loginBtn' onClick={() => {handleSubmit()}}>Login</button>
+					</Link>
+
+					<div className='formSignUp'>
+						<span className='newHere'>New Here?</span>{' '}
+						<Link className='newHereLink' to='/signup'>
+							Signup
+						</Link>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }

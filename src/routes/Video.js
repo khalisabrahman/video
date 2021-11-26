@@ -16,6 +16,7 @@ import Vectordown from '../components/Vectordown';
 import Vectorup from '../components/Vectorup';
 import { BackgroundData } from '../components/BackgroundData';
 
+
 function Video() {
 	const [title, setTitle] = useState('Saying Hi to my customers');
 	const [titleModal, setTitleModal] = useState(false);

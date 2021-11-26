@@ -1,6 +1,8 @@
 import React from 'react';
 import Tick from '../images/tick.png';
 import Cross from '../images/x.png';
+import Whitetick from '../images/whitetick.png';
+import WhiteCross from '../images/whitex.png'
 
 export const Plans = () => {
 	return (
@@ -86,45 +88,45 @@ export const Plans = () => {
 				</div>
 				<button>Downgrade</button>
 			</div>
-			<div className='plan current'>
+			<div className='plan current currentContainer'>
 				<h2 className='plan__title'>Team</h2>
-				<ul >
-					<li>
+				<ul className='current'>
+					<li id='currentli'>
 						<span>
-							<img src={Tick} alt='' />
+							<img src={Whitetick} alt='' />
 						</span>
 						Etiam ac finibus nisi, a porttitor
 					</li>
-					<li>
+					<li id='currentli'>
 						<span>
-							<img src={Tick} alt='' />
+							<img src={Whitetick} alt='' />
 						</span>
 						Quisque tincidunt velit a sapien vulputate
 					</li>
-					<li>
+					<li id='currentli'>
 						<span>
-							<img src={Tick} alt='' />
+							<img src={Whitetick} alt='' />
 						</span>
 						Vivamus pulvinar
 					</li>
-					<li>
+					<li id='currentli'>
 						<span>
-							<img src={Tick} alt='' />
+							<img src={Whitetick} alt='' />
 						</span>
 						In hac habitasse platea
 					</li>
-					<li>
+					<li id='currentli'>
 						<span>
-							<img src={Cross} alt='' />
+							<img src={WhiteCross} alt='' />
 						</span>
 						Nullam vitae augue
 					</li>
 				</ul>
 				<div className='plan__price__container'>
-					<h3 className='plan__price'>$</h3>
-					<span className='plan__price2'>23</span>
+					<h3 className='plan__price current'>$</h3>
+					<span className='plan__price2 current'>23</span>
 				</div>
-				<button>Current Plan</button>
+				<button id='currentBtn'>Current Plan</button>
 			</div>
 			<div className='plan'>
 				<h2 className='plan__title'>Agency</h2>

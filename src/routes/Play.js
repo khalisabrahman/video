@@ -23,9 +23,9 @@ function Play() {
 				<div className='flex'>
 					<div className='saved__videos__container'>
 						<div className='saved__video'>
-							<img className='saved__video__img' src={Saved} alt='' />
+							<img className='saved__video__img' src={Saved} alt='saved video' />
 							<div className='saved__video__dots'>
-								<img src={Dots} alt='' />
+								<img src={Dots} alt='edit video' />
 							</div>
 							<h3>Saying Hi to users!</h3>
 							<div className='saved__video__btns'>

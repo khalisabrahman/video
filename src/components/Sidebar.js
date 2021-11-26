@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import { SidebarData } from './SidebarData';
-import { VideoContext } from '../context/VideoState';
+import {VideoContext} from '../context/VideoState';
 import { Link } from 'react-router-dom';
 import AccountPic from '../images/accountPic.png';
 
 function Sidebar() {
 	const { loggedIn } = useContext(VideoContext);
+
+	
+	
 	return (
 		<div className='sidebar flex flex-fd-cl'>
-			<div className='sidebar__icons'>
+			<div className='sidebar__icons flex flex-fd-cl' style={{ height: '100vh'}}>
 				<svg
 					id='app-logo'
 					width='35'
@@ -43,8 +46,14 @@ function Sidebar() {
 							</Link>
 						);
 					})}
-				{loggedIn && <img src={AccountPic} alt="" />}
+				{loggedIn && (
+					<Link className='accountIcon' to='./account'>
+						<img src={AccountPic} alt="" />
+					</Link>
+				)
+				}
 			</div>
+			
 		</div>
 	);
 }

@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import {Plans} from '../components/Plans';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import Profilepic from '../images/profilepic.png';
-import Pencil from '../images/pencil.png';
+import { Plans } from '../components/Plans';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { ProfileBilling } from '../components/ProfileBilling';
+import {VideoContext} from '../context/VideoState';
 
 function Account() {
+	const [active, setActive] = useState('profile');
+	const { setLogoutState, loggedIn } = useContext(VideoContext);
+
+	useEffect(() => {
+		localStorage.setItem('loginState', JSON.stringify(loggedIn));
+	});
+
+	function handleClick() {
+		setLogoutState();
+	}
+
 	return (
 		<div className='flex container--pt container--pb'>
 			<Sidebar />
@@ -19,20 +28,21 @@ function Account() {
 					</div>
 
 					<Link to='/'>
-						<button className='logoutBtn'>Logout</button>
+						<button className='logoutBtn' onClick={() => {handleClick()}}>Logout</button>
 					</Link>
 				</div>
 				<div className='line'></div>
 				<div>
 					<ul className='flex account--nav'>
-						<li>Profile</li>
-						<li>My Plan</li>
-						<li>Billing</li>
+						<li onClick={() => setActive('profile')}>Profile</li>
+						<li onClick={() => setActive('plan')}>My Plan</li>
+						<li onClick={() => setActive('billing')}>Billing</li>
 					</ul>
 				</div>
-				{/* <ProfileInfo /> */}
-				{/* <ProfileBilling /> */}
-                <Plans />
+				
+				{ active === 'profile' && <ProfileInfo />} 
+				{ active === 'billing' && <ProfileBilling />}
+				{ active === 'plan' && <Plans />}
 			</div>
 		</div>
 	);
