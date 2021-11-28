@@ -1,14 +1,53 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { VideoContext } from '../context/VideoState';
+import {
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	onAuthStateChanged,
+	signOut,
+} from 'firebase/auth';
+import { auth } from '../components/firebase-config';
 
 export default function Login() {
-	const {setLoginState } = useContext(VideoContext);
+	const { loggedIn, setLoginState } = useContext(VideoContext);
+	const [loginEmail, setLoginEmail] = useState('');
+	const [loginPassword, setLoginPassword] = useState('');
+	const [registerEmail, setRegisterEmail] = useState('');
+	const [registerPassword, setRegisterPassword] = useState('');
+	const history = useHistory();
 
-	function handleSubmit() {
-		setLoginState();
-	}
+
+
+	const login = async (e) => {
+		e.preventDefault();
+		try {
+			const user = await signInWithEmailAndPassword(
+				auth,
+				loginEmail,
+				loginPassword
+			);
+			setLoginState();
+			history.push('/video')
+			
+		} catch (error) {
+			alert(error.message);
+		}
+	};
+
+	const register = async () => {
+		try {
+			const user = await createUserWithEmailAndPassword(
+				auth,
+				registerEmail,
+				registerPassword
+			);
+			console.log(user);
+		} catch (error) {
+			alert(error.message);
+		}
+	};
 
 	return (
 		<div className='flex container--pt container--pb'>
@@ -43,7 +82,7 @@ export default function Login() {
 			<Sidebar />
 			<h1 className='title'>Sign In</h1>
 			<div className='signInContainer'>
-				<form >
+				<form>
 					<label className='formLabel' htmlFor='email'>
 						Email Address
 					</label>
@@ -53,6 +92,9 @@ export default function Login() {
 						name='email'
 						placeholder='Enter your email'
 						required
+						onChange={(event) => {
+							setLoginEmail(event.target.value);
+						}}
 					/>
 					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='password'>
@@ -68,10 +110,14 @@ export default function Login() {
 						name='password'
 						placeholder='Enter your password'
 						required
+						onChange={(event) => {
+							setLoginPassword(event.target.value);
+						}}
 					/>
-					<Link to='/video'> 
-						<button className='loginBtn' onClick={() => {handleSubmit()}}>Login</button>
-					</Link>
+
+					<button className='loginBtn' onClick={login}>
+						Login
+					</button>
 
 					<div className='formSignUp'>
 						<span className='newHere'>New Here?</span>{' '}

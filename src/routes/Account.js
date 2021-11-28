@@ -10,9 +10,7 @@ function Account() {
 	const [active, setActive] = useState('profile');
 	const { setLogoutState, loggedIn } = useContext(VideoContext);
 
-	useEffect(() => {
-		localStorage.setItem('loginState', JSON.stringify(loggedIn));
-	});
+	
 
 	function handleClick() {
 		setLogoutState();

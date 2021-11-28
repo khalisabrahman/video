@@ -9,6 +9,7 @@ import Account from './routes/Account';
 import { VideoProvider } from './context/VideoState';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Sidebar from './components/Sidebar';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -23,15 +24,12 @@ function App() {
 					<Route exact path='/signup'>
 						<SignUp />
 					</Route>
-					<Route exact path='/video'>
-						<Video />
-					</Route>
-					<Route exact path='/play'>
-						<Play />
-					</Route>
-					<Route exact path='/account'>
-						<Account />
-					</Route>
+					<PrivateRoute exact path='/video' component={Video} />
+						
+					<PrivateRoute exact path='/play' component={Play} />
+						
+					<PrivateRoute exact path='/account' component={Account} />
+						
 				</VideoProvider>
 			</Switch>
 		</Router>
