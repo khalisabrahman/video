@@ -14,8 +14,7 @@ export default function Login() {
 	const { loggedIn, setLoginState } = useContext(VideoContext);
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
-	const [registerEmail, setRegisterEmail] = useState('');
-	const [registerPassword, setRegisterPassword] = useState('');
+
 	const history = useHistory();
 
 
@@ -31,19 +30,6 @@ export default function Login() {
 			setLoginState();
 			history.push('/video')
 			
-		} catch (error) {
-			alert(error.message);
-		}
-	};
-
-	const register = async () => {
-		try {
-			const user = await createUserWithEmailAndPassword(
-				auth,
-				registerEmail,
-				registerPassword
-			);
-			console.log(user);
 		} catch (error) {
 			alert(error.message);
 		}

@@ -3,25 +3,42 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import validate from '../components/validateInfo';
 import useForm from '../components/useForm';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../components/firebase-config';
 
 export default function SignUp() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [registerEmail, setRegisterEmail] = useState('');
+	const [registerPassword, setRegisterPassword] = useState('');
 
 	function submitForm() {
 		setIsSubmitted(true);
 	}
-	
+
 	const { handleChange, handleSubmit, values, errors } = useForm(
 		submitForm,
 		validate
 	);
 
+	const register = async () => {
+		try {
+			const user = await createUserWithEmailAndPassword(
+				auth,
+				registerEmail,
+				registerPassword
+			);
+			console.log('User created')
+			alert('User created. Go back to login page');
+		} catch (error) {
+			alert(error.message);
+		}
+	};
 	return (
 		<div className='flex container--pt container--pb'>
 			<Sidebar />
 			<h1 className='title'>Create an account</h1>
 			<div className='signInContainer'>
-				<form onSubmit={handleSubmit}>
+				<form>
 					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='username'>
 							Full name
@@ -48,8 +65,10 @@ export default function SignUp() {
 						className='formInput formInput--blueBorder'
 						name='email'
 						placeholder='Enter your email'
-						value={values.email}
-						onChange={handleChange}
+						// value={values.email}
+						onChange={(event) => {
+							setRegisterEmail(event.target.value);
+						}}
 					/>
 					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='password'>
@@ -66,14 +85,19 @@ export default function SignUp() {
 						className='formInput'
 						name='password'
 						placeholder='Enter your password'
-						value={values.password}
-						onChange={handleChange}
+						// value={values.password}
+						onChange={(event) => {
+							setRegisterPassword(event.target.value);
+						}}
 					/>
-					<button className='loginBtn'>Signup</button>
+					<button className='loginBtn' onClick={register}>
+						Signup
+					</button>
 					<div className='formSignUp'>
 						<span className='newHere'>Already user?</span>{' '}
-						
-						<Link className='newHereLink'to='/'>Login</Link>
+						<Link className='newHereLink' to='/'>
+							Login
+						</Link>
 					</div>
 				</form>
 			</div>
