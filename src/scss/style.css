@@ -132,6 +132,10 @@ a:hover {
   align-items: center;
 }
 
+.flex-flexwrap {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 63.9375em) {
   .hide-for-mobile {
     display: none;

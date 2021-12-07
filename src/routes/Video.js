@@ -89,7 +89,7 @@ function Video() {
 						<button className='listenBtn'>Listen</button>
 					</div>
 					<div className='rightContainer'>
-						<div class='flex selections'>
+						<div className='flex selections'>
 							<button
 								onClick={() => {
 									setActive('actor');

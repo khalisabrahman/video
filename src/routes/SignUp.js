@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import validate from '../components/validateInfo';
 import useForm from '../components/useForm';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../components/firebase-config';
+import { VideoContext } from '../context/VideoState';
 
 export default function SignUp() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');
+	const { setLoginState } = useContext(VideoContext);
+	const history = useHistory();
 
 	function submitForm() {
 		setIsSubmitted(true);
@@ -20,15 +23,16 @@ export default function SignUp() {
 		validate
 	);
 
-	const register = async () => {
+	const register = async (e) => {
+		e.preventDefault();
 		try {
 			const user = await createUserWithEmailAndPassword(
 				auth,
 				registerEmail,
 				registerPassword
 			);
-			console.log('User created')
-			alert('User created. Go back to login page');
+			setLoginState();
+			history.push('/video')
 		} catch (error) {
 			alert(error.message);
 		}
@@ -65,7 +69,6 @@ export default function SignUp() {
 						className='formInput formInput--blueBorder'
 						name='email'
 						placeholder='Enter your email'
-						// value={values.email}
 						onChange={(event) => {
 							setRegisterEmail(event.target.value);
 						}}
@@ -85,7 +88,6 @@ export default function SignUp() {
 						className='formInput'
 						name='password'
 						placeholder='Enter your password'
-						// value={values.password}
 						onChange={(event) => {
 							setRegisterPassword(event.target.value);
 						}}

@@ -1,22 +1,22 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { VideoContext } from '../context/VideoState';
 import {
-	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
-	onAuthStateChanged,
-	signOut,
+	onAuthStateChanged
 } from 'firebase/auth';
 import { auth } from '../components/firebase-config';
 
 export default function Login() {
-	const { loggedIn, setLoginState } = useContext(VideoContext);
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
-
+	const { setLoginState, setCurrentUser } = useContext(VideoContext);
 	const history = useHistory();
 
+	// onAuthStateChanged(auth, (currentUser) => {
+	// 	setCurrentUser(currentUser)
+	// })
 
 
 	const login = async (e) => {
@@ -27,8 +27,12 @@ export default function Login() {
 				loginEmail,
 				loginPassword
 			);
+			
+			console.log(user);
 			setLoginState();
-			history.push('/video')
+			history.push('/video');
+			// setCurrentUser(user);
+			
 			
 		} catch (error) {
 			alert(error.message);
@@ -110,6 +114,7 @@ export default function Login() {
 						<Link className='newHereLink' to='/signup'>
 							Signup
 						</Link>
+						
 					</div>
 				</form>
 			</div>

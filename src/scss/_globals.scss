@@ -87,6 +87,7 @@ a:hover {
 // Flexbox helper classes
 .flex {
     display: flex;
+    
 
     &-fd-cl {
         flex-direction: column;
@@ -102,6 +103,10 @@ a:hover {
 
     &-ai-c {
         align-items: center;
+    }
+    
+    &-flexwrap {
+        flex-wrap: wrap;
     }
 
 }

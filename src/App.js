@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
-import './scss/style.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import Login from './routes/Login';
 import Play from './routes/Play';
 import SignUp from './routes/SignUp';
 import Video from './routes/Video';
 import Account from './routes/Account';
 import { VideoProvider } from './context/VideoState';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import Sidebar from './components/Sidebar';
-import PrivateRoute from './components/PrivateRoute';
+import './scss/style.css';
 
 
 function App() {
@@ -20,16 +17,12 @@ function App() {
 					<Route exact path='/'>
 						<Login />
 					</Route>
-
 					<Route exact path='/signup'>
 						<SignUp />
 					</Route>
 					<PrivateRoute exact path='/video' component={Video} />
-						
 					<PrivateRoute exact path='/play' component={Play} />
-						
 					<PrivateRoute exact path='/account' component={Account} />
-						
 				</VideoProvider>
 			</Switch>
 		</Router>

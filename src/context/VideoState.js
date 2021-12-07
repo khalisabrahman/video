@@ -4,7 +4,7 @@ import VideoReducer from './VideoReducer';
 // Create initial state
 const initialState = {
 	loggedIn: false,
-	
+	currentUser: null
 };
 // Create context
 export const VideoContext = createContext(initialState);
@@ -13,16 +13,22 @@ export const VideoContext = createContext(initialState);
 export const VideoProvider = (props) => {
 	const [state, dispatch] = useReducer(VideoReducer, initialState);
 
-	
 	const setLoginState = () => {
 		dispatch({
-			type: 'set-login-state'
-		})
-	}
+			type: 'set-login-state',
+		});
+	};
 
-	const setLogoutState =() => {
+	const setLogoutState = () => {
 		dispatch({
-			type: 'set-logout-state'
+			type: 'set-logout-state',
+		});
+	};
+
+	const setCurrentUser = (data) => {
+		dispatch({
+			type: 'set-user',
+			payload: data
 		})
 	}
 
@@ -30,8 +36,10 @@ export const VideoProvider = (props) => {
 		<VideoContext.Provider
 			value={{
 				loggedIn: state.loggedIn,
-                setLoginState,
-				setLogoutState
+				currentUser: state.currentUser,
+				setLoginState,
+				setLogoutState,
+				setCurrentUser
 			}}
 		>
 			{props.children}
