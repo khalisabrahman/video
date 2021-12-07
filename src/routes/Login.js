@@ -4,6 +4,8 @@ import Sidebar from '../components/Sidebar';
 import { VideoContext } from '../context/VideoState';
 import {
 	signInWithEmailAndPassword,
+	setPersistence,
+	browserSessionPersistence,
 	onAuthStateChanged
 } from 'firebase/auth';
 import { auth } from '../components/firebase-config';
@@ -14,6 +16,7 @@ export default function Login() {
 	const { setLoginState, setCurrentUser } = useContext(VideoContext);
 	const history = useHistory();
 
+	// TODO
 	// onAuthStateChanged(auth, (currentUser) => {
 	// 	setCurrentUser(currentUser)
 	// })
@@ -22,6 +25,7 @@ export default function Login() {
 	const login = async (e) => {
 		e.preventDefault();
 		try {
+			// const loginState = await setPersistence(auth, browserSessionPersistence)
 			const user = await signInWithEmailAndPassword(
 				auth,
 				loginEmail,
@@ -29,6 +33,9 @@ export default function Login() {
 			);
 			
 			console.log(user);
+			console.log(auth.currentUser);
+			console.log(auth)
+			// console.log( loginState);
 			setLoginState();
 			history.push('/video');
 			// setCurrentUser(user);

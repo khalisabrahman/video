@@ -1,27 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import validate from '../components/validateInfo';
-import useForm from '../components/useForm';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../components/firebase-config';
 import { VideoContext } from '../context/VideoState';
 
 export default function SignUp() {
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [registerName, setRegisterName] = useState('');
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');
 	const { setLoginState } = useContext(VideoContext);
 	const history = useHistory();
-
-	function submitForm() {
-		setIsSubmitted(true);
-	}
-
-	const { handleChange, handleSubmit, values, errors } = useForm(
-		submitForm,
-		validate
-	);
 
 	const register = async (e) => {
 		e.preventDefault();
@@ -32,7 +21,7 @@ export default function SignUp() {
 				registerPassword
 			);
 			setLoginState();
-			history.push('/video')
+			history.push('/video');
 		} catch (error) {
 			alert(error.message);
 		}
@@ -47,26 +36,25 @@ export default function SignUp() {
 						<label className='formLabel' htmlFor='username'>
 							Full name
 						</label>
-						{errors.username && <span className='fail'>{errors.username}</span>}
 					</div>
 					<input
 						type='text'
-						className='formInput formInput--blueBorder'
+						className='formInput formInput'
 						name='username'
 						placeholder='Enter your full name'
-						value={values.username}
-						onChange={handleChange}
+						onChange={(event) => {
+							setRegisterName(event.target.value);
+						}}
 					/>
 					<div className='flex flex-jc-sb'>
 						<label className='formLabel' htmlFor='email'>
 							Email address
 						</label>
-						{errors.email && <span className='fail'>{errors.email}</span>}
 					</div>
 
 					<input
 						type='text'
-						className='formInput formInput--blueBorder'
+						className='formInput formInput'
 						name='email'
 						placeholder='Enter your email'
 						onChange={(event) => {
@@ -77,7 +65,7 @@ export default function SignUp() {
 						<label className='formLabel' htmlFor='password'>
 							New Password
 						</label>
-						{values.password.length > 6 ? (
+						{registerPassword.length > 6 ? (
 							<span className='strong'>Strong</span>
 						) : (
 							<span></span>

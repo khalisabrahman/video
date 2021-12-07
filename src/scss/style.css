@@ -177,7 +177,7 @@ a:hover {
   border-radius: 6px;
 }
 
-.formInput--blueBorder {
+.formInput:focus {
   border: 1px solid #5C90F3;
 }
 
